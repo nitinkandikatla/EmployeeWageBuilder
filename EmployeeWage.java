@@ -4,9 +4,12 @@ public class EmployeeWage {
 		public static final int IS_FULL_TIME=2;
 		public static final int EMP_RATE_PER_HR=20;
 		public static final int NUM_WORKING_DAYS=20;
+		public static final int MAX_WORKING_HRS=100;
 		public static void main(String[] args) {
-			int empHrs=0,empWage=0,totalWage=0;
-			for(int day=0;day<NUM_WORKING_DAYS;day++) {
+			int empHrs=0,totalEmpHrs=0,totalWorkingDays=0;
+			
+			while(totalEmpHrs<=MAX_WORKING_HRS && totalWorkingDays<NUM_WORKING_DAYS) {
+				totalWorkingDays++;
 			int empCheck=(int)Math.floor(Math.random()*10)%3;
 			switch(empCheck) {
 			case IS_PART_TIME: 
@@ -18,13 +21,12 @@ public class EmployeeWage {
 			default:
 				empHrs=0;
 			}
-		empWage=empHrs*EMP_RATE_PER_HR;
-		totalWage+=empWage;
-		System.out.println("Emp Wage : " + empWage);
-
-	}
-		System.out.println("Emp total Wage:" + totalWage);
-}
+			totalEmpHrs+=empHrs;
+			System.out.println("Day:" +totalWorkingDays + " Emp hrs:" + empHrs);
+			}
+			int totalEmpWage=totalEmpHrs*EMP_RATE_PER_HR;
+			System.out.println("Emp total Wage:" + totalEmpWage);
+		}
 }
 
 
