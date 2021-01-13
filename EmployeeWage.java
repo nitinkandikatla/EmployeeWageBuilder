@@ -1,4 +1,5 @@
-public class EmployeeWage {
+class CompanyEmpWage {
+
 	
 		public static final int IS_PART_TIME=1;
 		public static final int IS_FULL_TIME=2;
@@ -9,7 +10,7 @@ public class EmployeeWage {
 		private final int MAX_WORKING_HRS;
 		private int totalEmpWage;
 		
-		public EmployeeWage(String company,int EMP_RATE_PER_HR,int NUM_WORKING_DAYS,int MAX_WORKING_HRS) {
+		public CompanyEmpWage(String company,int EMP_RATE_PER_HR,int NUM_WORKING_DAYS,int MAX_WORKING_HRS) {
 			
 		    this.company=company;
 			this.EMP_RATE_PER_HR=EMP_RATE_PER_HR;
@@ -41,17 +42,21 @@ public class EmployeeWage {
 		
 		@Override
 		public String toString() {
-			// TODO Auto-generated method stub
 			return "Total Emp Wage for Company "+company+" is "+totalEmpWage;
 		}
+}
+public class EmployeeWage {
 		public static void main(String[] args) {
-			
-				EmployeeWage dMart=new EmployeeWage("Dmart",20,20,100);
-				EmployeeWage reliance=new EmployeeWage("Reliance",15,18,50);
-				dMart.computeEmpWage();
-				reliance.computeEmpWage();
-				System.out.println(dMart);
-				System.out.println(reliance);
+			    
+				CompanyEmpWage c[]=new CompanyEmpWage[3];
+				c[0]=new CompanyEmpWage("Dmart",20,20,100);
+				c[1]=new CompanyEmpWage("Reliance",15,18,50);
+				c[2]=new CompanyEmpWage("Tesla",25,25,120);
+				for(int i=0;i<c.length;i++)
+	    		{
+	        		c[i].computeEmpWage();
+	        		System.out.println(c[i]);
+			    }
 		}
 	
 }
