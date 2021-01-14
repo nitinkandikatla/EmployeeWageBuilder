@@ -1,6 +1,8 @@
 package employeeWage;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 class CompanyEmpWage {
@@ -79,7 +81,7 @@ class CompanyEmpWage {
 				System.out.println("Day:" +totalWorkingDays + " Emp hrs:" + empHrs + " Daily wage: " + empHrs*EMP_RATE_PER_HR + " total wage :" + totalEmpHrs*EMP_RATE_PER_HR);
 				
 			}
-			System.out.println(totalEmpHrs);
+			System.out.println("Total EmpHrs:-" +totalEmpHrs);
 			totalEmpWage=totalEmpHrs*EMP_RATE_PER_HR;
 			setTotalEmpWage(totalEmpWage);
 			//return totalEmpWage;
@@ -96,9 +98,11 @@ class CompanyEmpWage {
 
 }
 public class EmployeeWage {
+	
 		public static void main(String[] args) {
 			
-			ArrayList<CompanyEmpWage> company=new ArrayList<>();
+			//ArrayList<CompanyEmpWage> company=new ArrayList<>();
+			HashMap<String, CompanyEmpWage> companyToEmpWageMap=new HashMap<>();
 			System.out.println("Enter how companys to add");
 			Scanner sc =new Scanner(System.in);
 			int companyCount=sc.nextInt();
@@ -115,10 +119,16 @@ public class EmployeeWage {
 				c[i].NUM_WORKING_DAYS=s.nextInt();
 				System.out.println("Enter max hrs");
 				c[i].MAX_WORKING_HRS=s.nextInt();
-				company.add(c[i]);
+				//company.add(c[i]);
 				c[i].computeEmpWage();
+				companyToEmpWageMap.put(c[i].company, c[i]);
+				System.out.println("Company name: " + c[i].company);
 			}
-			System.out.println(company);
-	
-}
+			System.out.println("list of companys :- ");	
+			  for (Map.Entry<String, CompanyEmpWage> me : companyToEmpWageMap.entrySet()) {
+				  System.out.println( me.getKey() ); 
+			  }
+			 
+			
+			}
 }
